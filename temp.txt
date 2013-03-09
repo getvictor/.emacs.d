@@ -1,0 +1,27 @@
+total 608
+drwxrwxr-x.  8 victor victor   4096 Mar  9 13:52 .
+drwxr-xr-x. 17 victor victor   4096 Mar  9 13:50 ..
+-rwxrwxr-x.  1 victor victor   1489 Mar  9 13:50 ac-comphist.dat
+drwx------.  2 victor victor   4096 Mar  9 13:50 auto-save-list
+-rwxrwxr-x.  1 victor victor   6705 Feb  8 17:21 dirtree.el
+-rw-rw-r--.  1 victor victor   2904 Mar  9 13:50 .emacs.desktop
+-rw-rw-r--.  1 victor victor   2470 Mar  9 13:50 .emacs.keyfreq
+drwxrwxr-x.  7 victor victor   4096 Mar  9 13:47 ergoemacs_1.9.3.1
+-rwxrwxr-x.  1 victor victor  13761 Feb  8 17:21 ergonomic_emacs_layout_qwerty.png
+drwxrwxr-x.  7 victor victor   4096 Mar  9 13:50 .git
+-rw-rw-r--.  1 victor victor     16 Mar  9 13:50 .gitignore
+-rwxrwxr-x.  1 victor victor  11338 Feb  8 17:21 highlight-symbol.el
+-rw-------.  1 victor victor   5863 Mar  9 13:50 history
+-rwxrwxr-x.  1 victor victor   7175 Mar  9 13:41 init.el
+-rwxrwxr-x.  1 victor victor   6860 Feb  8 17:21 init.el~
+drwxrwxr-x.  9 victor victor   4096 Feb  8 17:21 nxhtml
+-rwxrwxr-x.  1 victor victor   1461 Feb  8 17:21 prev-next-buffer.el
+-rw-------.  1 victor victor    359 Mar  9 13:50 .recentf
+drwxrwxr-x.  2 victor victor   4096 Feb  8 17:21 server
+-rw-rw-r--.  1 victor victor      0 Mar  9 13:52 temp.txt
+-rwxrwxr-x.  1 victor victor   1964 Feb  8 17:21 tramp
+drwxrwxr-x.  6 victor victor   4096 Feb  8 17:21 tramp-2.2.4
+-rwxrwxr-x.  1 victor victor  18481 Feb  8 17:21 tree-mode.el
+-rwxrwxr-x.  1 victor victor  46541 Feb  8 17:21 twiki.el
+-rwxrwxr-x.  1 victor victor 415445 Feb  8 17:21 verilog-mode.el
+-rwxrwxr-x.  1 victor victor   9989 Feb  8 17:21 windata.el
