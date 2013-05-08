@@ -1,16 +1,12 @@
+;; Directory tree viewer for emacs
+(require 'dirtree)
+
 ;; Tramp for SSH connections
-;;(add-to-list 'load-path "C:/emacs-23.3-bin-i386/tramp-2.2.4/lispp")
-;;(require 'tramp)
-;;(setq tramp-shell-prompt-pattern "(.*tc@domU.*)|(.* ->.*)" )
-;;(setq tramp-shell-prompt-pattern ".*tc@domU.*" )
-;;(setq tramp-shell-prompt-pattern ".*victor.*" )
-;;(setq tramp-verbose 10)
-;;(setq tramp-default-method "plink")
-;;(setq tramp-default-method "rsh")
-;; install nXhtml
-;;(load "~/.emacs.d/nxhtml/autostart.el")
-;; enable dirtree
-;; (require 'dirtree)
+;; Using TRAMP that comes with Emacs.
+;; For installation of latest version go to http://www.gnu.org/software/tramp/#Installation
+(require 'tramp)
+(setq tramp-shell-prompt-pattern "(.*@domU.*)|(.*@oraclelinux6" )
+(setq tramp-default-method "plink")
 
 (server-start)
 ;; do not ask whether to kill a buffer when its client is still running
