@@ -1,6 +1,3 @@
-;; Directory tree viewer for emacs
-(require 'dirtree)
-
 ;; Tramp for SSH connections
 ;; Using TRAMP that comes with Emacs.
 ;; For installation of latest version go to http://www.gnu.org/software/tramp/#Installation
@@ -14,6 +11,10 @@
 
 (add-to-list 'load-path "~/emacs")
 (add-to-list 'load-path "~/.emacs.d/")
+
+;; Directory tree viewer for emacs
+(require 'dirtree)
+
 (load "prev-next-buffer")
 (defun back-window ()
   (interactive)
@@ -128,7 +129,8 @@
  (setq verilog-indent-level             2
        verilog-indent-level-module      2
        verilog-indent-level-declaration 2
-       verilog-indent-level-behavioral  2)
+       verilog-indent-level-behavioral  2
+       verilog-auto-newline nil)
 
 
 ;; cPerl mode
