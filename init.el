@@ -15,6 +15,9 @@
 ;; Directory tree viewer for emacs
 (require 'dirtree)
 
+;; Puppet mode
+(require 'puppet-mode)
+
 (load "prev-next-buffer")
 (defun back-window ()
   (interactive)
