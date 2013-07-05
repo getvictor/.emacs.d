@@ -154,7 +154,7 @@
 
 ;; Highlight current line
 (global-hl-line-mode 1)
-(set-face-background 'highlight "#330")
+(set-face-background 'highlight "#333")
 ;; Make Text mode the default so that highlight line mode will work for all files
 (setq default-major-mode 'text-mode)
 ;; Tweak text mode not to create a newline when saving a file
