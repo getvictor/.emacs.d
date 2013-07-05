@@ -184,6 +184,11 @@
 ;; Any files in verilog mode should have their keywords colorized 
 (add-hook 'verilog-mode-hook '(lambda () (font-lock-mode 1))) 
 
+;; Set default font
+;;(set-face-attribute
+;; 'default nil :font
+;; "-adobe-courier-medium-r-normal--14-*-*-*-m-*-iso8859-1")
+;; "-outline-Courier New-normal-normal-normal-mono-11-*-*-*-c-*-iso8859-1")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
