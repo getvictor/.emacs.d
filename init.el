@@ -35,11 +35,11 @@
 ;; Turn on mouse wheel for scrolling
 (mouse-wheel-mode t)
 
+;; Get rid of the Tab bar since I never use it
+(tabbar-mode -1)
 ;; Get rid of tool bar and menu bar for more screen real estate
-(if (display-graphic-p)
-    (progn
-      (menu-bar-mode -1)
-      (tool-bar-mode -1)))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 
 ;; replace tabs with spaces
 (setq-default indent-tabs-mode nil)
@@ -185,9 +185,9 @@
 (add-hook 'verilog-mode-hook '(lambda () (font-lock-mode 1))) 
 
 ;; Set default font
-;;(set-face-attribute
-;; 'default nil :font
-;; "-adobe-courier-medium-r-normal--14-*-*-*-m-*-iso8859-1")
+;; (set-face-attribute
+;;  'default nil :font
+;;  "-adobe-courier-medium-r-normal--14-*-*-*-m-*-iso8859-1")
 ;; "-outline-Courier New-normal-normal-normal-mono-11-*-*-*-c-*-iso8859-1")
 
 (custom-set-variables
