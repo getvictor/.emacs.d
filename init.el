@@ -12,6 +12,9 @@
 (add-to-list 'load-path "~/emacs")
 (add-to-list 'load-path "~/.emacs.d/")
 
+;; Open files in existing emacs window
+(setq ns-pop-up-frames nil)
+
 ;; Directory tree viewer for emacs
 (require 'dirtree)
 
