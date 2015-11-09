@@ -18,9 +18,6 @@
 ;; Directory tree viewer for emacs
 (require 'dirtree)
 
-;; Puppet mode
-(require 'puppet-mode)
-
 (load "prev-next-buffer")
 (defun back-window ()
   (interactive)
@@ -142,6 +139,10 @@
 ;(load-file user-init-file)
 ;(load-file custom-file)
 
+;; ruby mode
+;; setup files ending in ".rdl" to open in ruby-mode
+(add-to-list 'auto-mode-alist '("\\.rdl\\'" . ruby-mode))
+
 ;; verilog mode
 (setq verilog-indent-level              2
        verilog-indent-level-module      2
@@ -222,5 +223,10 @@
  '(completions-common-part ((t (:inherit default :foreground "red"))))
  '(cursor ((t (:background "white"))))
  '(diredp-ignored-file-name ((t (:foreground "#bebebe"))))
- '(isearch ((((class color) (min-colors 88) (background light)) (:background "black" :foreground "white"))))
- '(show-paren-match ((((class color) (background light)) (:background "azure2")))))
+ '(isearch ((((class color) (min-colors 88) (background light)) (:background "black" :foreground "white")))))
+
+;; Tweak show-paren-mode
+(require 'paren)
+(setq show-paren-style 'parenthesis)
+(set-face-attribute 'show-paren-match nil :weight 'ultra-bold)
+(set-face-attribute 'show-paren-match nil :background "gray10")
