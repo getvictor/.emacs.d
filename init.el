@@ -202,12 +202,7 @@
 ;; Any files in verilog mode should have their keywords colorized 
 (add-hook 'verilog-mode-hook '(lambda () (font-lock-mode 1))) 
 
-;; Set default font
-;; (set-face-attribute
-;;  'default nil :font
-;;  "-adobe-courier-medium-r-normal--14-*-*-*-m-*-iso8859-1")
-;; "-outline-Courier New-normal-normal-normal-mono-11-*-*-*-c-*-iso8859-1")
-
+(setq-default cursor-type 'bar)
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -230,3 +225,4 @@
 (setq show-paren-style 'parenthesis)
 (set-face-attribute 'show-paren-match nil :weight 'ultra-bold)
 (set-face-attribute 'show-paren-match nil :background "gray10")
+(set-face-attribute 'show-paren-match nil :foreground "gold")
