@@ -144,6 +144,7 @@
 (add-to-list 'auto-mode-alist '("\\.rdl\\'" . ruby-mode))
 
 ;; verilog mode
+(setq verilog-auto-endcomments nil)
 (setq verilog-indent-level              2
        verilog-indent-level-module      2
        verilog-indent-level-declaration 2
