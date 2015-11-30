@@ -142,6 +142,7 @@
 ;; ruby mode
 ;; setup files ending in ".rdl" to open in ruby-mode
 (add-to-list 'auto-mode-alist '("\\.rdl\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.dj\\'" . ruby-mode))
 
 ;; yaml mode
 (require 'yaml-mode)
