@@ -41,6 +41,12 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+;; Mac settings
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
+
 ;; replace tabs with spaces
 (setq-default indent-tabs-mode nil)
 
