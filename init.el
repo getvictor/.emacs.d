@@ -85,6 +85,7 @@
 (global-set-key (kbd "C-B") 'iswitchb-buffer)
 (global-set-key (kbd "C-S-B") 'ibuffer)
 (global-set-key (kbd "M-,") 'pop-tag-mark)
+(global-set-key (kbd "M-[") 'ff-find-other-file) ;; switch between *.h and *.cpp files
 
 ;; Enable left/right keys in ibuffer
 (defun iswitchb-local-keys ()
