@@ -146,6 +146,9 @@
 ;(load-file user-init-file)
 ;(load-file custom-file)
 
+;; Makefile mode
+(add-to-list 'auto-mode-alist '("\\.make\\'" . makefile-mode))
+
 ;; ruby mode
 ;; setup files ending in ".rdl" to open in ruby-mode
 (add-to-list 'auto-mode-alist '("\\.rdl\\'" . ruby-mode))
