@@ -134,6 +134,8 @@
 ;; Colors
 (set-face-foreground 'default "LightBlue")
 (set-face-background 'default "black")
+; Set mouse color to white
+(set-mouse-color "white")
 
 ;;; XEmacs backwards compatibility file
 ;(setq user-init-file
@@ -180,6 +182,12 @@
 (setq cperl-indent-level 4)
 (setq cperl-continued-statement-offset 0)
 (setq cperl-extra-newline-before-brace t)
+
+;; Groovy/Grails/Gradle
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
 
 ;; enable font lock mode
 (if (fboundp 'global-font-lock-mode)
