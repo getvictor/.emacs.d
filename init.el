@@ -228,21 +228,23 @@
 
 (setq-default cursor-type 'bar)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
+ '(package-selected-packages (quote (groovy-mode)))
  '(visible-cursor t))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(completions-common-part ((t (:inherit default :foreground "red"))))
  '(cursor ((t (:background "white"))))
  '(diredp-ignored-file-name ((t (:foreground "#bebebe"))))
- '(isearch ((((class color) (min-colors 88) (background light)) (:background "black" :foreground "white")))))
+ '(isearch ((((class color) (min-colors 88) (background light)) (:background "black" :foreground "white"))))
+ '(show-paren-match ((((class color) (background light)) (:background "azure2")))))
 
 ;; Tweak show-paren-mode
 (require 'paren)
