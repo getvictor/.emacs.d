@@ -5,7 +5,9 @@ server/
 var/
 .emacs.*
 .recentf
+abbrev_defs
 ac-comphist.dat
 history
+places
 recentf
 tramp
