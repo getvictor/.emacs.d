@@ -1,42 +1,37 @@
+;; Package manager
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+;; Keeping configs clean. Load as early as possible.
+(require 'no-littering)
+
+(add-to-list 'load-path "~/.emacs.d/packages")
+
 ;; Tramp for SSH connections
 ;; Using TRAMP that comes with Emacs.
 ;; For installation of latest version go to http://www.gnu.org/software/tramp/#Installation
 (require 'tramp)
 (setq tramp-shell-prompt-pattern "(.*@domU.*)|(.*@oraclelinux6" )
 (setq tramp-default-method "plink")
+(customize-set-variable 'tramp-encoding-shell "/tool/pandora64/bin/tcsh")
 
 (server-start)
 ;; do not ask whether to kill a buffer when its client is still running
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
 
-(add-to-list 'load-path "~/emacs")
-(add-to-list 'load-path "~/.emacs.d/")
-
 ;; Open files in existing emacs window
 (setq ns-pop-up-frames nil)
 
-;; Directory tree viewer for emacs
-(require 'dirtree)
-
-(load "prev-next-buffer")
-(defun back-window ()
-  (interactive)
-  (other-window -1))
-
-;; ErgoEmacs redoes all keybindings -- Danger
 ;; Turn off methods and mouse for running in a terminal
 (if (not window-system)
     (defun tool-bar-mode(a) nil))
 (if (not window-system)
     (setq mouse-wheel-mode nil))
-(setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US
-(load-file "~/.emacs.d/ergoemacs_1.9.3.1/site-lisp/site-start.el")
 
 ;; Turn on mouse wheel for scrolling
 (mouse-wheel-mode t)
 
-;; Get rid of the Tab bar since I never use it
-(tabbar-mode -1)
 ;; Get rid of tool bar and menu bar for more screen real estate
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -53,50 +48,80 @@
 ;; turn off 'file <foo> is large' messages
 (setq large-file-warning-threshold nil)
 
-;; Enable syntax highlighting for twiki pages (twiki.el package)
-(load "twiki")
-;;(require 'twiki)
-(add-to-list 'auto-mode-alist'("\\.twiki$" . twiki-mode))
-
 ;; Don't turn off word wrap when splitting the window vertically
 (setq truncate-partial-width-windows nil)
 
 ;; Autocomplete mode settings.
-(setq ac-auto-start 3) ;; Start autocompletion after 3 characters were typed.
+(setq ac-auto-start nil) ;; Start autocompletion after 3 characters were typed.
 (setq ac-auto-show-menu 2.0) ;; Show auto-complete menu after 2 seconds.
 (global-set-key (kbd "C-SPC") 'auto-complete)
 (global-set-key (kbd "C-/") 'auto-complete)
 
 ;; My shortcuts
-;; Remove Shift+Space binding from ErgoEmacs
-(define-key xmsi-keymap (kbd "S-SPC") nil)
-(global-set-key "\C-t" 'make-frame-command)
-(global-set-key (kbd "C-S-t") 'delete-frame)
+;; Emacs-specific keys
+(global-set-key (kbd "M-a") 'execute-extended-command)
+;; Navigation
+(global-set-key (kbd "M-i") 'previous-line)
+(global-set-key (kbd "M-k") 'next-line)
+(global-set-key (kbd "M-j") 'left-char)
+(global-set-key (kbd "M-l") 'right-char)
+(global-set-key (kbd "M-h") 'move-beginning-of-line)
+(global-set-key (kbd "M-H") 'move-end-of-line)
+(global-set-key (kbd "M-o") 'forward-word)
+(global-set-key (kbd "M-u") 'backward-word)
+(global-set-key (kbd "M-U") 'forward-paragraph)
+(global-set-key (kbd "M-O") 'backward-paragraph)
+(global-set-key (kbd "M-I") 'scroll-down-command)
+(global-set-key (kbd "M-K") 'scroll-up-command)
+(global-set-key (kbd "M-J") 'beginning-of-buffer)
+(global-set-key (kbd "M-L") 'end-of-buffer)
 (global-set-key "\C-l" 'goto-line)
-(global-set-key (kbd "C-S-O") 'find-alternate-file)
+
+;; Editing
+(global-set-key (kbd "M-f") 'delete-forward-char)
+(global-set-key (kbd "M-F") 'delete-backward-char)
+(global-set-key (kbd "M-d") 'delete-backward-char)
+(global-set-key (kbd "M-r") 'kill-word) ;; delete next word
+(global-set-key (kbd "M-e") 'backward-kill-word)
+(global-set-key (kbd "M-g") 'kill-line) ;; delete to end of line
+(defun backward-kill-line (arg)
+  "Kill ARG lines backward."
+  (interactive "p")
+  (kill-line (- 1 arg)))
+(global-set-key (kbd "M-G") 'backward-kill-line)
+(global-set-key (kbd "M-x") 'kill-whole-line) ;; cut line
+(global-set-key (kbd "C-x") 'kill-region) ;; cut
+(global-set-key (kbd "M-v") 'yank) ;; paste
+(global-set-key (kbd "C-v") 'yank) ;; paste
+(global-set-key (kbd "M-c") 'kill-ring-save) ;; copy
+(global-set-key (kbd "C-c") 'kill-ring-save) ;; copy
+(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "M-z") 'undo)
+;; NOTE: There is no redo. Just do something else and then undo to achieve the same effect.
+
+;; Search
+(global-set-key (kbd "M-;") 'isearch-forward)
+(define-key isearch-mode-map (kbd "M-;") 'isearch-repeat-forward)
+(global-set-key (kbd "M-:") 'isearch-backward)
+(define-key isearch-mode-map (kbd "M-:") 'isearch-repeat-backward)
+
+;; Buffers and Windows
+(global-set-key (kbd "C-s") 'save-buffer)
+(defun back-window ()
+  (interactive)
+  (other-window -1))
+(global-set-key (kbd "M-S") 'back-window)
+(global-set-key (kbd "M-s") 'other-window)
+(global-set-key (kbd "C-B") 'ibuffer)
+(global-set-key (kbd "C-b") 'switch-to-buffer)
 (global-set-key (kbd "M-@") 'previous-buffer)
 (global-set-key (kbd "M-2") 'next-buffer)
-(global-set-key (kbd "C-S-N") 'text-mode)
-(global-set-key (kbd "C-S-M") 'auto-complete-mode)
-(global-set-key (kbd "C-{") 'shrink-window-horizontally)
-(global-set-key (kbd "C-}") 'enlarge-window-horizontally)
-(global-set-key (kbd "C-?") 'enlarge-window)
-(global-set-key [M-f4] 'save-buffers-kill-emacs)
-(global-set-key (kbd "C-B") 'iswitchb-buffer)
-(global-set-key (kbd "C-S-B") 'ibuffer)
-(global-set-key (kbd "M-,") 'pop-tag-mark)
-(global-set-key (kbd "M-[") 'ff-find-other-file) ;; switch between *.h and *.cpp files
-
-;; Enable left/right keys in ibuffer
-(defun iswitchb-local-keys ()
-  (mapc (lambda (K)
-          (let* ((key (car K)) (fun (cdr K)))
-            (define-key iswitchb-mode-map (edmacro-parse-keys key) fun)))
-        '(("<right>" . iswitchb-next-match)
-          ("<left>"  . iswitchb-prev-match)
-          ("<up>"    . ignore             )
-          ("<down>"  . ignore             ))))
-(add-hook 'iswitchb-define-mode-map-hook 'iswitchb-local-keys)
+(global-set-key (kbd "C-O") 'find-alternate-file)
+(global-set-key (kbd "C-o") 'find-file)
+(global-set-key (kbd "M-4") 'split-window-below)
+(global-set-key (kbd "M-$") 'split-window-right)
+(global-set-key (kbd "M-3") 'delete-window)
+(global-set-key (kbd "C-W") 'kill-this-buffer)
 
 (defun vi-open-line-above ()
   "Insert a newline above the current line and put point at beginning."
@@ -137,17 +162,6 @@
 ; Set mouse color to white
 (set-mouse-color "white")
 
-;;; XEmacs backwards compatibility file
-;(setq user-init-file
-;      (expand-file-name "init.el"
-;			(expand-file-name ".xemacs" "~")))
-;(setq custom-file
-;      (expand-file-name "custom.el"
-;			(expand-file-name ".xemacs" "~")))
-
-;(load-file user-init-file)
-;(load-file custom-file)
-
 ;; Makefile mode
 (add-to-list 'auto-mode-alist '("\\.make\\'" . makefile-mode))
 
@@ -157,7 +171,6 @@
 (add-to-list 'auto-mode-alist '("\\.dj\\'" . ruby-mode))
 
 ;; yaml mode
-(require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; verilog mode
@@ -183,11 +196,8 @@
 (setq cperl-continued-statement-offset 0)
 (setq cperl-extra-newline-before-brace t)
 
-;; Groovy/Grails/Gradle
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
+;; Kotlin.
+(add-to-list 'auto-mode-alist '("\\.kt$" . kotlin-mode))
 
 ;; enable font lock mode
 (if (fboundp 'global-font-lock-mode)
@@ -208,11 +218,13 @@
 ;; Enable AutoCompression Mode so that I can see *.gz files without problems
 (auto-compression-mode 1)
 
-;; highlight-symbol package -- highlights all instances of a word
-(require 'highlight-symbol)
-(global-set-key [(shift f3)] 'highlight-symbol-at-point)
-(global-set-key [f3] 'highlight-symbol-next)
-(global-set-key [(meta f3)] 'highlight-symbol-prev)
+;; Highlight symbols with overlays while providing a keymap for various operations about highlighted symbols.
+(require 'symbol-overlay)
+(global-set-key (kbd "<f11>") 'symbol-overlay-put)
+(global-set-key (kbd "<f12>") 'symbol-overlay-jump-next)
+(global-set-key (kbd "<f10>") 'symbol-overlay-jump-prev)
+;;(global-set-key (kbd "<f7>") 'symbol-overlay-mode)
+;;(global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
 
 ;; Enable Verilog-Mode for Emacs -- colors and other junk for .v and .sv files
 (defun prepend-path ( my-path ) 
@@ -233,7 +245,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (groovy-mode)))
+ '(package-selected-packages
+   '(no-littering yaml-mode auto-complete python-mode kotlin-mode ergoemacs-mode gnu-elpa-keyring-update))
  '(visible-cursor t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
