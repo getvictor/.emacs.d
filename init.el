@@ -116,7 +116,7 @@
 (global-set-key (kbd "C-b") 'switch-to-buffer)
 (global-set-key (kbd "M-@") 'previous-buffer)
 (global-set-key (kbd "M-2") 'next-buffer)
-(global-set-key (kbd "C-O") 'find-alternate-file)
+(global-set-key (kbd "C-S-o") 'find-alternate-file)
 (global-set-key (kbd "C-o") 'find-file)
 (global-set-key (kbd "M-4") 'split-window-below)
 (global-set-key (kbd "M-$") 'split-window-right)
@@ -184,6 +184,10 @@
       '(lambda ()
          (setq indent-tabs-mode nil)
       ))
+;; Any files that end in .v, .dv or .sv should be in verilog mode 
+(add-to-list 'auto-mode-alist '("\\.[ds]?v[h]?\\'" . verilog-mode)) 
+;; Any files in verilog mode should have their keywords colorized 
+(add-hook 'verilog-mode-hook '(lambda () (font-lock-mode 1))) 
 
 ;; cPerl mode
 (add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
@@ -226,18 +230,6 @@
 ;;(global-set-key (kbd "<f7>") 'symbol-overlay-mode)
 ;;(global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
 
-;; Enable Verilog-Mode for Emacs -- colors and other junk for .v and .sv files
-(defun prepend-path ( my-path ) 
-(setq load-path (cons (expand-file-name my-path) load-path))) 
-(defun append-path ( my-path ) 
-(setq load-path (append load-path (list (expand-file-name my-path))))) 
-;; Load verilog mode only when needed 
-(autoload 'verilog-mode "verilog-mode" "Verilog mode" t ) 
-;; Any files that end in .v, .dv or .sv should be in verilog mode 
-(add-to-list 'auto-mode-alist '("\\.[ds]?v[h]?\\'" . verilog-mode)) 
-;; Any files in verilog mode should have their keywords colorized 
-(add-hook 'verilog-mode-hook '(lambda () (font-lock-mode 1))) 
-
 (setq-default cursor-type 'bar)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -246,7 +238,7 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(no-littering yaml-mode auto-complete python-mode kotlin-mode ergoemacs-mode gnu-elpa-keyring-update))
+   '(verilog-mode no-littering yaml-mode auto-complete python-mode kotlin-mode ergoemacs-mode gnu-elpa-keyring-update))
  '(visible-cursor t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

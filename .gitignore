@@ -1,5 +1,11 @@
 auto-save-list/
-ac-comphist.dat
+backup/
+etc/
+server/
+var/
 .emacs.*
-history
 .recentf
+ac-comphist.dat
+history
+recentf
+tramp
