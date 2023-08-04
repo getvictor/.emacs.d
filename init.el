@@ -98,6 +98,7 @@
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-z") 'undo)
 ;; NOTE: There is no redo. Just do something else and then undo to achieve the same effect.
+(global-set-key (kbd "C-a") 'mark-whole-buffer)
 
 ;; Search
 (global-set-key (kbd "M-;") 'isearch-forward)
