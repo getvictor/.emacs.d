@@ -121,7 +121,7 @@
 (global-set-key (kbd "C-o") 'find-file)
 (global-set-key (kbd "M-4") 'split-window-below)
 (global-set-key (kbd "M-$") 'split-window-right)
-(global-set-key (kbd "M-3") 'delete-window)
+(global-set-key (kbd "M-3") 'delete-other-windows)
 (global-set-key (kbd "C-W") 'kill-this-buffer)
 
 (defun vi-open-line-above ()
