@@ -105,6 +105,8 @@
 (define-key isearch-mode-map (kbd "M-;") 'isearch-repeat-forward)
 (global-set-key (kbd "M-:") 'isearch-backward)
 (define-key isearch-mode-map (kbd "M-:") 'isearch-repeat-backward)
+(global-set-key (kbd "M-5") 'replace-string)
+(global-set-key (kbd "M-%") 'replace-regexp)
 
 ;; Buffers and Windows
 (global-set-key (kbd "C-s") 'save-buffer)
