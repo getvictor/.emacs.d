@@ -58,6 +58,9 @@
 (global-set-key (kbd "C-/") 'auto-complete)
 
 ;; My shortcuts
+;; Remove problematic key bindings in other modes
+(eval-after-load "mhtml-mode"
+  '(define-key mhtml-mode-map (kbd "M-o") nil)) ;; HTML+ mode
 ;; Emacs-specific keys
 (global-set-key (kbd "M-a") 'execute-extended-command)
 ;; Navigation
@@ -89,12 +92,11 @@
   (interactive "p")
   (kill-line (- 1 arg)))
 (global-set-key (kbd "M-G") 'backward-kill-line)
-(global-set-key (kbd "M-x") 'kill-whole-line) ;; cut line
-(global-set-key (kbd "C-x") 'kill-region) ;; cut
+(whole-line-or-region-global-mode 1) ;; mode that allows cut/copy/etc. to both work on a line or on a highlighted region
+(global-set-key (kbd "M-x") 'kill-region) ;; cut
+(global-set-key (kbd "M-c") 'kill-ring-save) ;; copy
 (global-set-key (kbd "M-v") 'yank) ;; paste
 (global-set-key (kbd "C-v") 'yank) ;; paste
-(global-set-key (kbd "M-c") 'kill-ring-save) ;; copy
-(global-set-key (kbd "C-c") 'kill-ring-save) ;; copy
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-z") 'undo)
 ;; NOTE: There is no redo. Just do something else and then undo to achieve the same effect.
@@ -241,7 +243,7 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(verilog-mode no-littering yaml-mode auto-complete python-mode kotlin-mode ergoemacs-mode gnu-elpa-keyring-update))
+   '(whole-line-or-region verilog-mode no-littering yaml-mode auto-complete python-mode kotlin-mode ergoemacs-mode gnu-elpa-keyring-update))
  '(visible-cursor t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
