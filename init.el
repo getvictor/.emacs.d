@@ -117,7 +117,7 @@
   (other-window -1))
 (global-set-key (kbd "M-S") 'back-window)
 (global-set-key (kbd "M-s") 'other-window)
-(global-set-key (kbd "C-B") 'ibuffer)
+(global-set-key (kbd "C-S-b") 'ibuffer)
 (global-set-key (kbd "C-b") 'switch-to-buffer)
 (global-set-key (kbd "M-@") 'previous-buffer)
 (global-set-key (kbd "M-2") 'next-buffer)
@@ -243,7 +243,7 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(whole-line-or-region verilog-mode no-littering yaml-mode auto-complete python-mode kotlin-mode ergoemacs-mode gnu-elpa-keyring-update))
+   '(json-mode whole-line-or-region verilog-mode no-littering yaml-mode auto-complete python-mode kotlin-mode ergoemacs-mode gnu-elpa-keyring-update))
  '(visible-cursor t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
