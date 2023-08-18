@@ -262,3 +262,9 @@
 (set-face-attribute 'show-paren-match nil :weight 'ultra-bold)
 (set-face-attribute 'show-paren-match nil :background "gray10")
 (set-face-attribute 'show-paren-match nil :foreground "gold")
+
+;; JSON mode. The spacing for json-pretty-print is 2, so we must set standard indent width the same
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
