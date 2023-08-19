@@ -94,9 +94,9 @@
 (global-set-key (kbd "M-G") 'backward-kill-line)
 (whole-line-or-region-global-mode 1) ;; mode that allows cut/copy/etc. to both work on a line or on a highlighted region
 (global-set-key (kbd "M-x") 'kill-region) ;; cut
-(global-set-key (kbd "M-c") 'kill-ring-save) ;; copy
-(global-set-key (kbd "M-v") 'yank) ;; paste
-(global-set-key (kbd "C-v") 'yank) ;; paste
+(global-set-key (kbd "M-c") 'kill-ring-save) ;; copy; use C-@ to set-mark-command (start highlighting); C-g to Quit
+(global-set-key (kbd "M-v") 'yank) ;; paste; use M-y (yank-pop) to get to a previous kill
+(global-set-key (kbd "C-v") 'yank) ;; paste; use M-y (yank-pop) to get to a previous kill
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-z") 'undo)
 ;; NOTE: There is no redo. Just do something else and then undo to achieve the same effect.
