@@ -94,9 +94,9 @@
 (global-set-key (kbd "M-G") 'backward-kill-line)
 (whole-line-or-region-global-mode 1) ;; mode that allows cut/copy/etc. to both work on a line or on a highlighted region
 (global-set-key (kbd "M-x") 'kill-region) ;; cut
-(global-set-key (kbd "M-c") 'kill-ring-save) ;; copy
-(global-set-key (kbd "M-v") 'yank) ;; paste
-(global-set-key (kbd "C-v") 'yank) ;; paste
+(global-set-key (kbd "M-c") 'kill-ring-save) ;; copy; use C-@ to set-mark-command (start highlighting); C-g to Quit
+(global-set-key (kbd "M-v") 'yank) ;; paste; use M-y (yank-pop) to get to a previous kill
+(global-set-key (kbd "C-v") 'yank) ;; paste; use M-y (yank-pop) to get to a previous kill
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-z") 'undo)
 ;; NOTE: There is no redo. Just do something else and then undo to achieve the same effect.
@@ -117,7 +117,7 @@
   (other-window -1))
 (global-set-key (kbd "M-S") 'back-window)
 (global-set-key (kbd "M-s") 'other-window)
-(global-set-key (kbd "C-B") 'ibuffer)
+(global-set-key (kbd "C-S-b") 'ibuffer)
 (global-set-key (kbd "C-b") 'switch-to-buffer)
 (global-set-key (kbd "M-@") 'previous-buffer)
 (global-set-key (kbd "M-2") 'next-buffer)
@@ -243,7 +243,7 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(whole-line-or-region verilog-mode no-littering yaml-mode auto-complete python-mode kotlin-mode ergoemacs-mode gnu-elpa-keyring-update))
+   '(json-mode whole-line-or-region verilog-mode no-littering yaml-mode auto-complete python-mode kotlin-mode ergoemacs-mode gnu-elpa-keyring-update))
  '(visible-cursor t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -262,6 +262,12 @@
 (set-face-attribute 'show-paren-match nil :weight 'ultra-bold)
 (set-face-attribute 'show-paren-match nil :background "gray10")
 (set-face-attribute 'show-paren-match nil :foreground "gold")
+
+;; JSON mode. The spacing for json-pretty-print is 2, so we must set standard indent width the same
+(add-hook 'json-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
 
 ;; Put backup, lock, and autosave files in their own directory, so they don't pollute my directories
 (setq backup-directory-alist '((".*" . "~/.emacs.d/backup/"))
