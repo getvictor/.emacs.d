@@ -277,13 +277,7 @@
   kept-new-versions 20   ; how many of the newest versions to keep
   kept-old-versions 5    ; and how many of the old
   )
-(if (eq system-type 'windows-nt)
-    ;; TODO: Figure out how to put lock files and auto-save files into their own directory on Windows
-    (setq create-lockfiles nil
-          auto-save-default nil
-     )
-  (setq lock-file-name-transforms
-        '(("\\`/.*/\\([^/]+\\)\\'" "~/.emacs.d/backup/\\1" t))
-        auto-save-file-name-transforms
-        '(("\\`/.*/\\([^/]+\\)\\'" "~/.emacs.d/backup/\\1" t)))
-  )
+(setq lock-file-name-transforms
+      '((".*" "~/.emacs.d/backup/" t))
+      auto-save-file-name-transforms
+      '((".*" "~/.emacs.d/backup/" t)))
