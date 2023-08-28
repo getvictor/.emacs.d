@@ -278,6 +278,6 @@
   kept-old-versions 5    ; and how many of the old
   )
 (setq lock-file-name-transforms
-      '((".*" "~/.emacs.d/backup/" t))
+      '((".*" "~/.emacs.d/backup/" md5))
       auto-save-file-name-transforms
-      '((".*" "~/.emacs.d/backup/" t)))
+      '((".*" "~/.emacs.d/backup/" md5)))
